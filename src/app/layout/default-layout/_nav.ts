@@ -10,6 +10,21 @@ export const navItems: INavData[] = [
       text: 'NEW',
     },
   },
+  {
+    title: true,
+    name: 'Exercise',
+  },
+  {
+    name: '운동 등록',
+    url: '/exercise/register',
+    iconComponent: { name: 'cil-drop' },
+  },
+  {
+    name: '운동 목록',
+    url: '/exercise/list',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'cil-pencil' },
+  },
   // {
   //   title: true,
   //   name: 'Theme',
@@ -252,7 +267,7 @@ export const navItems: INavData[] = [
   //   name: 'Extras',
   // },
   {
-    name: 'Pages',
+    name: 'Settings',
     url: '/login',
     iconComponent: { name: 'cil-star' },
     children: [
@@ -266,11 +281,11 @@ export const navItems: INavData[] = [
       //   url: '/login',
       //   icon: 'nav-icon-bullet',
       // },
-      // {
-      //   name: 'Register',
-      //   url: '/register',
-      //   icon: 'nav-icon-bullet',
-      // },
+      {
+        name: 'Register',
+        url: '/register',
+        icon: 'nav-icon-bullet',
+      },
       // {
       //   name: 'Error 404',
       //   url: '/404',
@@ -283,15 +298,15 @@ export const navItems: INavData[] = [
       // },
     ],
   },
-  {
-    title: true,
-    name: 'Links',
-    class: 'mt-auto',
-  },
-  {
-    name: 'Docs',
-    url: 'https://coreui.io/angular/docs/5.x/',
-    iconComponent: { name: 'cil-description' },
-    attributes: { target: '_blank' },
-  },
+  // {
+  //   title: true,
+  //   name: 'Links',
+  //   class: 'mt-auto',
+  // },
+  // {
+  //   name: 'Docs',
+  //   url: 'https://coreui.io/angular/docs/5.x/',
+  //   iconComponent: { name: 'cil-description' },
+  //   attributes: { target: '_blank' },
+  // },
 ];
