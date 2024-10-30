@@ -13,11 +13,15 @@ import { DropdownModule, SidebarModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
 
-import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
-import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-import {AngularFireModule} from '@angular/fire/compat';
-import {FormsModule} from '@angular/forms';
-import {bootstrapApplication, BrowserModule} from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat';
+import {
+  AngularFireAuthModule,
+  // USE_EMULATOR as USE_AUTH_EMULATOR,
+} from '@angular/fire/compat/auth';
+import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
+
 import { environment } from '../environments/environment';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -60,13 +64,17 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
       withHashLocation(),
     ),
-    importProvidersFrom(SidebarModule, DropdownModule,
+    // FIREBASE EMULATOR: Not Tested
+    // { provide: USE_AUTH_EMULATOR, useValue: !environment.production ? ['localhost', 9099] : undefined, },
+    importProvidersFrom(
+      SidebarModule,
+      DropdownModule,
       BrowserModule,
       FormsModule,
       // AppRoutingModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
-      FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+      FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     ),
     IconSetService,
     provideAnimations(),
