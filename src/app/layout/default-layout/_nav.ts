@@ -25,6 +25,12 @@ export const navItems: INavData[] = [
     linkProps: { fragment: 'headings' },
     iconComponent: { name: 'cil-pencil' },
   },
+  {
+    name: '운동 결과',
+    url: '/exercise/result',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'cil-pencil' },
+  },
   // {
   //   title: true,
   //   name: 'Theme',
@@ -267,12 +273,12 @@ export const navItems: INavData[] = [
   //   name: 'Extras',
   // },
   {
-    name: 'Settings',
+    name: '회원',
     url: '/login',
     iconComponent: { name: 'cil-star' },
     children: [
       {
-        name: 'FB Login',
+        name: '로그인',
         url: '/fb-login',
         icon: 'nav-icon-bullet',
       },
@@ -282,7 +288,7 @@ export const navItems: INavData[] = [
       //   icon: 'nav-icon-bullet',
       // },
       {
-        name: 'Register',
+        name: '회원 가입',
         url: '/register',
         icon: 'nav-icon-bullet',
       },
