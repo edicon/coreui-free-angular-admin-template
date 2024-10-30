@@ -16,7 +16,7 @@ import {
   ButtonDirective,
 } from '@coreui/angular';
 import { Subscription } from 'rxjs';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import firebase from 'firebase/compat/app';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
