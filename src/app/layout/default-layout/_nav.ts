@@ -273,6 +273,10 @@ export const navItems: INavData[] = [
   //   name: 'Extras',
   // },
   {
+    title: true,
+    name: 'Members',
+  },
+  {
     name: '회원',
     url: '/login',
     iconComponent: { name: 'cil-star' },
