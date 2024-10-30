@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import {
@@ -15,11 +15,12 @@ import {
   FormControlDirective,
   ButtonDirective,
 } from '@coreui/angular';
+import { Subscription } from 'rxjs';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 import firebase from 'firebase/compat/app';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {firebaseui, FirebaseUIModule} from 'firebaseui-angular';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-fb-login',
@@ -47,19 +48,20 @@ import { Subscription } from 'rxjs';
   ],
   providers: [],
 })
-export class FbLoginComponent {
+export class FbLoginComponent implements OnDestroy {
   user: firebase.User | null = null;
   private authSubscription: Subscription | null = null;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.authSubscription = afAuth.authState.subscribe(this.afAuthChangeListener);
   }
 
-  private afAuthChangeListener(user: firebase.User | null) {
+  private afAuthChangeListener = (user: firebase.User | null) => {
     // if needed, do a redirect in here
     this.user = user;
     if (user) {
       console.log('Logged in :)');
+      this.router.navigateByUrl('/home/dashboard');
     } else {
       console.log('Logged out :(');
     }
