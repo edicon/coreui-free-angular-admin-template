@@ -1,5 +1,8 @@
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -28,12 +31,14 @@ import {
 } from '@coreui/angular';
 
 import { IconDirective } from '@coreui/icons-angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-default-header',
   templateUrl: './default-header.component.html',
   standalone: true,
   imports: [
+    CommonModule,
     ContainerComponent,
     HeaderTogglerDirective,
     SidebarToggleDirective,
@@ -61,6 +66,9 @@ import { IconDirective } from '@coreui/icons-angular';
   ],
 })
 export class DefaultHeaderComponent extends HeaderComponent {
+  user: firebase.User | null = null;
+  private authSubscription: Subscription | null = null;
+
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
 
@@ -83,6 +91,12 @@ export class DefaultHeaderComponent extends HeaderComponent {
     private router: Router,
   ) {
     super();
+
+    this.authSubscription = afAuth.authState.subscribe(this.afAuthChangeListener);
+  }
+
+  private afAuthChangeListener = (user: firebase.User | null) => {
+    this.user = user;
   }
 
   sidebarId = input('sidebar1');
@@ -209,5 +223,11 @@ export class DefaultHeaderComponent extends HeaderComponent {
       .catch((error) => {
         console.error('Logout error:', error);
       });
+  }
+
+  ngOnDestroy(): void {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 }

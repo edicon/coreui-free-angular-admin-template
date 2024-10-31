@@ -166,13 +166,21 @@
       <!--     Lock Account -->
       <!--   </a> -->
       <!-- </li> -->
-      <li>
+      <li *ngIf="user; else showLogin">
         <!-- <a cDropdownItem routerLink=""> -->
-        <a cDropdownItem (click)="logout()">
+        <a cDropdownItem routerLink (click)="logout()">
           <svg cIcon class="me-2" name="cilAccountLogout"></svg>
-          Logout
+          로그아웃
         </a>
       </li>
+      <ng-template #showLogin>
+        <li>
+          <a cDropdownItem routerLink="/fb-login">
+            <svg cIcon class="me-2" name="cilAccountLogin"></svg>
+            로그인
+          </a>
+        </li>
+      </ng-template>
     </ul>
   </c-dropdown>
 </ng-template>
