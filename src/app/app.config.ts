@@ -69,6 +69,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       SidebarModule,
       DropdownModule,
+      // firebaseui-angular
       BrowserModule,
       FormsModule,
       // AppRoutingModule,
