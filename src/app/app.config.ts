@@ -1,4 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { enableProdMode } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   provideRouter,
@@ -23,6 +24,10 @@ import {
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 
 import { environment } from '../environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
