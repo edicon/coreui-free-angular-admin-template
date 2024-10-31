@@ -281,11 +281,11 @@ export const navItems: INavData[] = [
     url: '/login',
     iconComponent: { name: 'cil-star' },
     children: [
-      {
-        name: '로그인',
-        url: '/fb-login',
-        icon: 'nav-icon-bullet',
-      },
+      // {
+      //   name: '로그인',
+      //   url: '/fb-login',
+      //   icon: 'nav-icon-bullet',
+      // },
       // {
       //   name: 'Login',
       //   url: '/login',
