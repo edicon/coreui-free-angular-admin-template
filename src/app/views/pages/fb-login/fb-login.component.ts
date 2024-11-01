@@ -15,15 +15,12 @@ import {
   FormControlDirective,
   ButtonDirective,
 } from '@coreui/angular';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFireDatabase,
-  AngularFireObject,
-} from '@angular/fire/compat/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { environment } from 'src/environments/environment';
 
