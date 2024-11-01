@@ -9,5 +9,6 @@
 ```
 
 - [Interface 'DatabaseSnapshotExists<T>' incorrectly extends interface 'DataSnapshot'](https://github.com/angular/angularfire/issues/3255)
+  - [Ref](https://stackoverflow.com/questions/73281199/error-when-importing-angularfiredatabasemodule)
   - tsconfig.json:
     `"skipLibCheck": true`
