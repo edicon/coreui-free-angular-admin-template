@@ -68,13 +68,13 @@ export class FbLoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void { }
 
   private afAuthChangeListener = (user: firebase.User | null) => {
-    // if needed, do a redirect in here
     this.user = user;
     if (user) {
       if (!environment.production) {
         console.log('Logged in :)');
         this.testAuthDb();
       }
+      // if needed, do a redirect in here
       this.router.navigateByUrl('/home/dashboard');
     } else {
       console.log('Logged out :(');
