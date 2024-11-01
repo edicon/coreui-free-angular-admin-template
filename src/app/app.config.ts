@@ -16,11 +16,20 @@ import { routes } from './app.routes';
 
 import { FormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+
+// firebase: Module or Namespace Based
+// TODO: firebase: Module Based
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { provideAuth, getAuth } from '@angular/fire/auth';
+
+// firebase: Namespace Based
 import { AngularFireModule } from '@angular/fire/compat';
 import {
   AngularFireAuthModule,
   // USE_EMULATOR as USE_AUTH_EMULATOR,
 } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 
 import { environment } from '../environments/environment';
@@ -71,6 +80,10 @@ export const appConfig: ApplicationConfig = {
     ),
     // FIREBASE EMULATOR: Not Tested
     // { provide: USE_AUTH_EMULATOR, useValue: !environment.production ? ['localhost', 9099] : undefined, },
+    //  TODO : firebase: Module Based
+    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    // provideAuth(() => getAuth()),
+
     importProvidersFrom(
       SidebarModule,
       DropdownModule,
@@ -78,8 +91,11 @@ export const appConfig: ApplicationConfig = {
       BrowserModule,
       FormsModule,
       // AppRoutingModule,
+      // firebase: Namespace Based
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
+      AngularFireDatabaseModule,
+      AngularFirestoreModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     ),
     IconSetService,
